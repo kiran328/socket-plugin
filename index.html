@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log('open: ');
+        var ws = new WebSocket("ws://127.0.0.1:8081");
+        ws.onopen = function (event) {
+            console.log('Connection is open ...');
+        };
+        ws.onerror = function (err) {
+            console.log('err: ', err);
+        }
+        ws.onmessage = function (event) {
+            console.log(JSON.parse(event.data))
+        };
+        ws.onclose = function () {
+            console.log("Connection is closed...");
+        }
+    </script>
+</body>
+
+</html>
